@@ -1,5 +1,6 @@
 from sys import stdin
-
+import sys
+sys.setrecursionlimit(100000)
 class Node:
     def __init__(self, value):
         self.value = value
@@ -16,7 +17,7 @@ def height(node):
 def abs_value(x):
     return -x if x < 0 else x
 
-def is_avl_util(node, min_value, max_value):
+def is_avl_tree(node, min_value =  float('-inf'), max_value=float('inf')):
     if node is None:
         return True
 
@@ -29,15 +30,11 @@ def is_avl_util(node, min_value, max_value):
     if abs_value(left_height - right_height) > 1:
         return False
 
-    return (is_avl_util(node.left, min_value, node.value) and
-            is_avl_util(node.right, node.value, max_value))
+    return (is_avl_tree(node.left, min_value, node.value) and
+            is_avl_tree(node.right, node.value, max_value))
 
-def is_avl_tree(root):
-    return is_avl_util(root, float('-inf'), float('inf'))
 
-# Чтение входных данных
 n, root_index = [int(x) for x in stdin.readline().split()]
-
 tree = [Node(i) for i in range(n)]
 
 for i in range(n):
@@ -47,7 +44,6 @@ for i in range(n):
     if num2 != -1:
         tree[i].right = tree[num2]
 
-# Проверка, является ли дерево AVL-деревом
 if is_avl_tree(tree[root_index]):
     print(1)
 else:

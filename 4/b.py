@@ -22,14 +22,14 @@ def count_sum(prefix_sum, x1, y1, x2, y2):
 
 
 data = stdin.readlines()
-n, m, k = map(int, data[0].split())
+n, b, k = map(int, data[0].split())
 
 matrix = []
 for i in range(1, n + 1):
     row = list(map(int, data[i].split()))
     matrix.append(row)
 
-prefix_sum = build_prefix_sum(matrix, n, m)
+prefix_sum = build_prefix_sum(matrix, n, b)
 
 for i in range(k):
     x1, y1, x2, y2 = map(int, data[n + 1 + i].split())

@@ -19,7 +19,7 @@ def dfs(tree, start):
 
     return further, maxDistance
 
-def diameter(tree):
+def calculate_diameter(tree):
     startNode = next(iter(tree))
     further, _ = dfs(tree, startNode)
     _, diameter = dfs(tree, further)
@@ -48,7 +48,7 @@ for i in range(n - 1):
     heights.append(height_i)
     max_height = max(max_height, height_i)
 
-D = diameter(tree)
+diameter = calculate_diameter(tree)
 
-print(max_height, D)
+print(max_height, diameter)
 print(*heights)
