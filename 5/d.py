@@ -21,6 +21,5 @@ def min_lex_cyclic_shift(S):
     return S[k:k + n]
 
 
-# Чтение входных данных
 S = input().strip()
 print(min_lex_cyclic_shift(S))
